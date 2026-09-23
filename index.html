@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inclusive Makerspace Planner | Making for Everyone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top">Making for Everyone</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div id="top" class="container">
+      <section class="intro" aria-labelledby="pageTitle">
+        <h1 id="pageTitle">Inclusive Makerspace Planner</h1>
+        <p class="lead">A guided planning tool to help public library staff support inclusive maker programming for youth with disabilities.</p>
+        <p class="project-credit">Based on research from the IMLS-funded <em>Making for Everyone</em> project.</p>
+      </section>
+
+      <div class="orientation">
+        <figure id="design-principles" class="diagram">
+          <a href="design-principles.png">
+            <img id="diagramImage" src="design-principles.png" width="4363" height="2383" alt="Four connected design principles: Getting Ready covers staff and space readiness; Program Design covers needs assessment, targeted programming, and collaboration; Promotion covers active marketing and online presence; Engagement covers active communication and co-tinkering.">
+          </a>
+          <p id="diagramFallback" class="image-error" hidden>The diagram image is unavailable. Place <strong>design-principles.png</strong> in the same folder as this page.</p>
+          <figcaption id="diagramCaption">The four areas are connected. Select the image to view it at full size.</figcaption>
+        </figure>
+
+        <section class="overview" aria-labelledby="overviewHeading">
+          <div class="overview-copy">
+            <h2 id="overviewHeading">Reflect and plan</h2>
+            <p>This tool is designed to help public library staff reflect on their approach to maker programming and identify ways to strengthen accessibility and inclusion for youth with disabilities.</p>
+            <p>Inclusive programming takes ongoing work. You can explore the four connected areas in any order.</p>
+          </div>
+          <div class="how-card">
+            <h2>How it works</h2>
+            <p>For each practice, choose the option that best describes your library:</p>
+            <ul>
+              <li><strong>In place</strong> — This is currently part of our practice.</li>
+              <li><strong>In progress</strong> — We are working toward this.</li>
+              <li><strong>Not in place</strong> — This is not currently part of our practice.</li>
+            </ul>
+            <p>After each section, you'll receive suggested next steps based on your responses.</p>
+          </div>
+        </section>
+      </div>
+
+      <section id="explore" class="explore" aria-labelledby="exploreHeading">
+        <h2 id="exploreHeading" class="explore-heading">Choose an area to explore</h2>
+        <p class="explore-instruction">Select an area to begin. Your next steps will appear below its practices.</p>
+
+        <div class="area-grid">
+          <button class="area-card" type="button" data-area-target="getting-ready" aria-controls="areaPanel" aria-expanded="false">
+            <span class="area-letter" aria-hidden="true">A</span>
+            <span class="area-card-copy"><strong>Getting Ready</strong><span class="area-description">Staff readiness, spaces, &amp; equipment</span><span class="area-status" data-area-status="getting-ready">Not started</span></span>
+          </button>
+          <button class="area-card" type="button" data-area-target="program-design" aria-controls="areaPanel" aria-expanded="false">
+            <span class="area-letter" aria-hidden="true">B</span>
+            <span class="area-card-copy"><strong>Program Design</strong><span class="area-description">Community input &amp; collaboration</span><span class="area-status" data-area-status="program-design">Not started</span></span>
+          </button>
+          <button class="area-card" type="button" data-area-target="promotion" aria-controls="areaPanel" aria-expanded="false">
+            <span class="area-letter" aria-hidden="true">C</span>
+            <span class="area-card-copy"><strong>Promotion</strong><span class="area-description">Welcome &amp; accessibility information</span><span class="area-status" data-area-status="promotion">Not started</span></span>
+          </button>
+          <button class="area-card" type="button" data-area-target="engagement" aria-controls="areaPanel" aria-expanded="false">
+            <span class="area-letter" aria-hidden="true">D</span>
+            <span class="area-card-copy"><strong>Engagement</strong><span class="area-description">Flexibility &amp; individualized support</span><span class="area-status" data-area-status="engagement">Not started</span></span>
+          </button>
+        </div>
+
+        <section id="areaPanel" class="area-panel" aria-labelledby="areaTitle" hidden>
+          <div class="panel-heading">
+            <h2 id="areaTitle" tabindex="-1"></h2>
+            <button id="closeArea" class="text-button" type="button">Close area</button>
+          </div>
+          <p id="areaIntro" class="area-intro"></p>
+          <p id="progressMessage" class="progress-message" role="status"></p>
+          <div id="questionList" class="question-list"></div>
+
+          <section id="resultsSection" class="results-section" aria-labelledby="resultsTitle" hidden>
+            <h3 id="resultsTitle"></h3>
+            <div id="resultsList"></div>
+            <div class="next-areas">
+              <h4>Explore another area</h4>
+              <div id="nextAreaButtons" class="next-area-buttons"></div>
+            </div>
+            <div class="action-section">
+              <label for="actionStep">What's one action you'd like to take based on what you explored today? <em>(optional)</em></label>
+              <textarea id="actionStep" name="actionStep" rows="3" placeholder="Your action will be saved in this browser as you type."></textarea>
+              <p id="saveMessage" class="save-message" role="status" hidden>Saved in this browser.</p>
+              <p class="closing-note">Inclusive maker programming grows through reflection and collaboration. Return to this tool as your programs and community change.</p>
+            </div>
+          </section>
+        </section>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container">Making for Everyone</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
