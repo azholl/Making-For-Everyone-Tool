@@ -48,19 +48,45 @@ const areaData = {
       {
         ids: [1, 2, 3],
         title: "Build staff readiness and knowledge",
-        text: "Find one source of accessibility guidance for staff. It could be a local partner or a training opportunity.",
-        resource: {
-          title: "Project ENABLE training for librarians",
-          url: "https://projectenable.syr.edu/training/"
+        notInPlace: {
+          text: "Choose an upcoming maker activity and identify one part that may be difficult to join. Ask staff what guidance they need to offer another way to participate.",
+          resource: {
+            title: "Project ENABLE training for librarians",
+            url: "https://projectenable.syr.edu/training/"
+          }
+        },
+        inProgress: {
+          text: "Try one accessibility strategy staff have been learning in an upcoming activity. Afterward, share what worked and identify one question to take to a trainer or community partner.",
+          resource: {
+            title: "Project ENABLE: Planning Inclusive Programs",
+            url: "https://projectenable.syr.edu/training/modules/topics_list/module/132"
+          }
         }
       },
       {
         ids: [4, 5, 6],
         title: "Review access to your makerspace",
-        text: "Walk through one upcoming maker activity from a participant's perspective and identify one access barrier you could address.",
-        resource: {
-          title: "ALA Physical Disabilities Toolkit",
-          url: "https://www.ala.org/accessibility/physical-disabilities"
+        notInPlace: {
+          text: "Before the next program, follow the route from the entrance to the maker space. Check whether participants can reach a work surface and use the tools needed for the activity. Choose one barrier to address.",
+          resource: {
+            title: "University of Illinois: Makerspace Accessibility Assessment",
+            url: "https://publish.illinois.edu/imls-a11y/makerspace-accessibility-assessment/"
+          },
+          additionalResource: {
+            title: "University of Washington DO-IT: Making a Makerspace?",
+            url: "https://doit.uw.edu/brief/making-a-makerspace-guidelines-for-accessibility-and-universal-design/"
+          }
+        },
+        inProgress: {
+          text: "Test one access change already underway during a maker activity. Ask a participant whether it helped them use the space or tools. Continue adjusting activities as needed.",
+          resource: {
+            title: "University of Washington DO-IT: Making a Makerspace?",
+            url: "https://doit.uw.edu/brief/making-a-makerspace-guidelines-for-accessibility-and-universal-design/"
+          },
+          additionalResource: {
+            title: "University of Illinois: Makerspace Accessibility Assessment",
+            url: "https://publish.illinois.edu/imls-a11y/makerspace-accessibility-assessment/"
+          }
         }
       }
     ]
@@ -100,19 +126,37 @@ const areaData = {
       {
         ids: [7, 8],
         title: "Learn directly from youth and caregivers",
-        text: "Ask youth and caregivers what interests them and what would help them take part in an upcoming maker activity. Use their feedback to make one change.",
-        resource: {
-          title: "ALA Accessible Conversations facilitation guide",
-          url: "https://www.ala.org/sites/default/files/tools/content/230614-ppo-accessible-conversations-guide-WEB.pdf"
+        notInPlace: {
+          text: "Invite youth with disabilities and caregivers to comment on an upcoming maker activity. Ask what interests them and what might make it hard for them to take part in activities. Use one answer to change the plan.",
+          resource: {
+            title: "ALA Accessible Conversations facilitation guide",
+            url: "https://www.ala.org/sites/default/files/tools/content/230614-ppo-accessible-conversations-guide-WEB.pdf"
+          }
+        },
+        inProgress: {
+          text: "Return to youth and caregivers who shared feedback. Show one change you made, ask whether it helped, and use their response to revise the next activity.",
+          resource: {
+            title: "Carrie Banks: Nothing About Us Without Us (video)",
+            url: "https://www.youtube.com/watch?v=XaNWRovs4LQ"
+          }
         }
       },
       {
         ids: [9, 10],
         title: "Build connections that can support inclusion",
-        text: "Ask a colleague or community partner for help with an upcoming maker program. They may know what would make it more accessible or what participants need.",
-        resource: {
-          title: "ILRU directory of Centers for Independent Living",
-          url: "https://www.ilru.org/cil-directory"
+        notInPlace: {
+          text: "Ask one colleague or community organization to review an upcoming activity for an access barrier staff may have missed. Agree on one change the library can make.",
+          resource: {
+            title: "ILRU directory of Centers for Independent Living",
+            url: "https://www.ilru.org/cil-directory"
+          }
+        },
+        inProgress: {
+          text: "Before the next program, agree with a colleague or current partner on a specific role, such as reviewing materials or offering support. Debrief afterward to decide what to repeat.",
+          resource: {
+            title: "Programming Librarian: Partnering for Accessibility",
+            url: "https://programminglibrarian.org/articles/partnering-accessibility-small-rural-libraries"
+          }
         }
       }
     ]
@@ -146,19 +190,37 @@ const areaData = {
       {
         ids: [11, 12],
         title: "Make accessibility information easier to find",
-        text: "Review one upcoming program announcement and add or clarify one piece of information that could help participants understand its accessibility.",
-        resource: {
-          title: "ALA Accessibility as a Team Effort: event listing example",
-          url: "https://www.ala.org/advocacy/diversity/odlos-blog/accessibility-team-effort"
+        notInPlace: {
+          text: "Update the next maker program listing to describe what participants will do and how to request support. Put the contact information in the listing so families can find it before deciding to attend.",
+          resource: {
+            title: "ALA Accessibility as a Team Effort: event listing example",
+            url: "https://www.ala.org/advocacy/diversity/odlos-blog/accessibility-team-effort"
+          }
+        },
+        inProgress: {
+          text: "Ask someone unfamiliar with the program to find its activity details and access contact in the announcement. Clarify anything they have trouble finding before you post the next one.",
+          resource: {
+            title: "ALA Accessibility as a Team Effort: event listing example",
+            url: "https://www.ala.org/advocacy/diversity/odlos-blog/accessibility-team-effort"
+          }
         }
       },
       {
         ids: [13],
         title: "Expand how you share program information",
-        text: "Find one more way to tell youth with disabilities and their families about your maker programs. A community partner could help share your next announcement.",
-        resource: {
-          title: "Programming Librarian: publicity through partnerships",
-          url: "https://programminglibrarian.org/articles/mutual-support-libraries-and-community-partners"
+        notInPlace: {
+          text: "Ask a school or local disability organization to share the next maker program notice with families who may not see the library's usual announcements.",
+          resource: {
+            title: "Programming Librarian: publicity through partnerships",
+            url: "https://programminglibrarian.org/articles/mutual-support-libraries-and-community-partners"
+          }
+        },
+        inProgress: {
+          text: "Ask a few participants how they heard about the last maker program. Use their answers to keep one effective channel and try a different route for the next event.",
+          resource: {
+            title: "ALA: Evaluating Your Outreach",
+            url: "https://www.ala.org/advocacy/advleg/publicawareness/campaign%40yourlibrary/prtools/handbook/evaluation"
+          }
         }
       }
     ]
@@ -192,19 +254,37 @@ const areaData = {
       {
         ids: [14, 15],
         title: "Build flexibility into participation",
-        text: "Choose a maker activity and identify one way that it could be adapted if a participant needs a different way to engage.",
-        resource: {
-          title: "ALA Children and Teens with Disabilities Toolkit",
-          url: "https://www.ala.org/accessibility/children-and-teens-disabilities"
+        notInPlace: {
+          text: "Before an upcoming activity, prepare a second way to complete one key step. Decide how staff can offer individual guidance if a participant needs it during the program.",
+          resource: {
+            title: "ALA Children and Teens with Disabilities Toolkit",
+            url: "https://www.ala.org/accessibility/children-and-teens-disabilities"
+          }
+        },
+        inProgress: {
+          text: "After the next activity, note when staff changed instructions or offered individual help. Ask participants whether those changes helped and revise one option for the next session.",
+          resource: {
+            title: "Project ENABLE: Planning Inclusive Programs",
+            url: "https://projectenable.syr.edu/training/modules/topics_list/module/132"
+          }
         }
       },
       {
         ids: [16],
         title: "Create more opportunities for youth choice",
-        text: "Identify one part of an upcoming activity where participants could have more control over how they participate or what they create.",
-        resource: {
-          title: "CAST: Optimize choice and autonomy",
-          url: "https://udlguidelines.cast.org/engagement/interests-identities/choice-autonomy/"
+        notInPlace: {
+          text: "Offer participants a choice that changes the activity, such as which materials they use or what they create. Prepare the options before the program so either choice is possible.",
+          resource: {
+            title: "CAST: Optimize choice and autonomy",
+            url: "https://udlguidelines.cast.org/engagement/interests-identities/choice-autonomy/"
+          }
+        },
+        inProgress: {
+          text: "Ask participants which choices they used and what they wished they could decide for themselves. Use one suggestion to change the next activity.",
+          resource: {
+            title: "CAST: Optimize choice and autonomy",
+            url: "https://udlguidelines.cast.org/engagement/interests-identities/choice-autonomy/"
+          }
         }
       }
     ]
@@ -368,12 +448,27 @@ function getAreaRecommendations(area, responses) {
   const steps = [];
   for (let i = 0; i < area.recommendations.length; i++) {
     const recommendation = area.recommendations[i];
+    let hasNotInPlace = false;
+    let hasInProgress = false;
+
     for (let j = 0; j < recommendation.ids.length; j++) {
       const answer = responses[recommendation.ids[j]];
-      if (answer === 'in-progress' || answer === 'not-in-place') {
-        steps.push(recommendation);
-        break;
+      if (answer === 'not-in-place') {
+        hasNotInPlace = true;
+      } else if (answer === 'in-progress') {
+        hasInProgress = true;
       }
+    }
+
+    // A starting step takes priority when this group has mixed answers.
+    if (hasNotInPlace || hasInProgress) {
+      const choice = hasNotInPlace ? recommendation.notInPlace : recommendation.inProgress;
+      steps.push({
+        title: recommendation.title,
+        text: choice.text,
+        resource: choice.resource,
+        additionalResource: choice.additionalResource
+      });
     }
   }
   return steps;
@@ -425,6 +520,19 @@ function addPrintText(parent, tag, text) {
   return element;
 }
 
+function addPrintResource(parent, resource, label) {
+  const resourceLine = document.createElement('p');
+  resourceLine.className = 'print-resource';
+  addPrintText(resourceLine, 'strong', label);
+  const link = document.createElement('a');
+  link.href = resource.url;
+  link.textContent = resource.title;
+  resourceLine.appendChild(link);
+  const address = addPrintText(resourceLine, 'span', resource.url);
+  address.className = 'print-url';
+  parent.appendChild(resourceLine);
+}
+
 function buildPrintReport() {
   const report = document.getElementById('printReport');
   report.innerHTML = '';
@@ -467,16 +575,10 @@ function buildPrintReport() {
       addPrintText(step, 'h4', steps[j].title);
       addPrintText(step, 'p', steps[j].text);
       if (steps[j].resource) {
-        const resourceLine = document.createElement('p');
-        resourceLine.className = 'print-resource';
-        addPrintText(resourceLine, 'strong', 'Helpful resource: ');
-        const link = document.createElement('a');
-        link.href = steps[j].resource.url;
-        link.textContent = steps[j].resource.title;
-        resourceLine.appendChild(link);
-        const address = addPrintText(resourceLine, 'span', steps[j].resource.url);
-        address.className = 'print-url';
-        step.appendChild(resourceLine);
+        addPrintResource(step, steps[j].resource, 'Helpful resource: ');
+      }
+      if (steps[j].additionalResource) {
+        addPrintResource(step, steps[j].additionalResource, 'Also useful: ');
       }
       section.appendChild(step);
     }
@@ -496,6 +598,17 @@ function buildPrintReport() {
     report.appendChild(section);
   }
   addPrintText(report, 'p', 'Based on research from the IMLS-funded Making for Everyone project.');
+  const projectLine = addPrintText(report, 'p', 'Project website: ');
+  const projectLink = document.createElement('a');
+  projectLink.href = 'https://sites.google.com/view/makingforeveryone/home';
+  projectLink.textContent = projectLink.href;
+  projectLine.appendChild(projectLink);
+
+  const resourcesLine = addPrintText(report, 'p', 'More project resources: ');
+  const resourcesLink = document.createElement('a');
+  resourcesLink.href = 'https://sites.google.com/view/makingforeveryone/resources';
+  resourcesLink.textContent = resourcesLink.href;
+  resourcesLine.appendChild(resourcesLink);
 }
 
 function openArea(areaKey) {
