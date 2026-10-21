@@ -537,7 +537,7 @@ function buildPrintReport() {
   const report = document.getElementById('printReport');
   report.innerHTML = '';
   addPrintText(report, 'h1', 'Inclusive Makerspace Planner');
-  addPrintText(report, 'p', 'Your responses and next steps · ' + new Date().toLocaleDateString());
+  addPrintText(report, 'p', 'Based on your responses, here are suggested next steps and resources to help you put them into practice.');
 
   const keys = Object.keys(areaData);
   let completedAreas = 0;
@@ -553,19 +553,6 @@ function buildPrintReport() {
     const section = document.createElement('section');
     section.className = 'print-area';
     addPrintText(section, 'h2', area.title);
-    addPrintText(section, 'h3', 'Your responses');
-    const answerList = document.createElement('ul');
-    answerList.className = 'print-responses';
-    for (let j = 0; j < area.questions.length; j++) {
-      const question = area.questions[j];
-      for (let k = 0; k < responseOptions.length; k++) {
-        if (responseOptions[k].value === responses[question.id]) {
-          addPrintText(answerList, 'li', question.title + ': ' + responseOptions[k].label);
-          break;
-        }
-      }
-    }
-    section.appendChild(answerList);
 
     addPrintText(section, 'h3', 'Suggested next steps');
     const steps = getAreaRecommendations(area, responses);
