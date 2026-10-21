@@ -1,4 +1,3 @@
-// A new key prevents old test answers from being attached to renumbered practices.
 const STORAGE_KEY = "makingForEveryoneResponsesV2";
 const ACTION_KEY = "makingForEveryoneAction";
 
@@ -49,12 +48,20 @@ const areaData = {
       {
         ids: [1, 2, 3],
         title: "Build staff readiness and knowledge",
-        text: "Find one source of accessibility guidance for staff. It could be a local partner or a training opportunity."
+        text: "Find one source of accessibility guidance for staff. It could be a local partner or a training opportunity.",
+        resource: {
+          title: "Project ENABLE training for librarians",
+          url: "https://projectenable.syr.edu/training/"
+        }
       },
       {
         ids: [4, 5, 6],
         title: "Review access to your makerspace",
-        text: "Walk through one upcoming maker activity from a participant's perspective and identify one access barrier you could address."
+        text: "Walk through one upcoming maker activity from a participant's perspective and identify one access barrier you could address.",
+        resource: {
+          title: "ALA Physical Disabilities Toolkit",
+          url: "https://www.ala.org/accessibility/physical-disabilities"
+        }
       }
     ]
   },
@@ -93,12 +100,20 @@ const areaData = {
       {
         ids: [7, 8],
         title: "Learn directly from youth and caregivers",
-        text: "Ask youth and caregivers what interests them and what would help them take part in an upcoming maker activity. Use their feedback to make one change."
+        text: "Ask youth and caregivers what interests them and what would help them take part in an upcoming maker activity. Use their feedback to make one change.",
+        resource: {
+          title: "ALA Accessible Conversations facilitation guide",
+          url: "https://www.ala.org/sites/default/files/tools/content/230614-ppo-accessible-conversations-guide-WEB.pdf"
+        }
       },
       {
         ids: [9, 10],
         title: "Build connections that can support inclusion",
-        text: "Ask a colleague or community partner for help with an upcoming maker program. They may know what would make it more accessible or what participants need."
+        text: "Ask a colleague or community partner for help with an upcoming maker program. They may know what would make it more accessible or what participants need.",
+        resource: {
+          title: "ILRU directory of Centers for Independent Living",
+          url: "https://www.ilru.org/cil-directory"
+        }
       }
     ]
   },
@@ -131,12 +146,20 @@ const areaData = {
       {
         ids: [11, 12],
         title: "Make accessibility information easier to find",
-        text: "Review one upcoming program announcement and add or clarify one piece of information that could help participants understand its accessibility."
+        text: "Review one upcoming program announcement and add or clarify one piece of information that could help participants understand its accessibility.",
+        resource: {
+          title: "ALA Accessibility as a Team Effort: event listing example",
+          url: "https://www.ala.org/advocacy/diversity/odlos-blog/accessibility-team-effort"
+        }
       },
       {
         ids: [13],
         title: "Expand how you share program information",
-        text: "Find one more way to tell youth with disabilities and their families about your maker programs. A community partner could help share your next announcement."
+        text: "Find one more way to tell youth with disabilities and their families about your maker programs. A community partner could help share your next announcement.",
+        resource: {
+          title: "Programming Librarian: publicity through partnerships",
+          url: "https://programminglibrarian.org/articles/mutual-support-libraries-and-community-partners"
+        }
       }
     ]
   },
@@ -169,12 +192,20 @@ const areaData = {
       {
         ids: [14, 15],
         title: "Build flexibility into participation",
-        text: "Choose a maker activity and identify one way that it could be adapted if a participant needs a different way to engage."
+        text: "Choose a maker activity and identify one way that it could be adapted if a participant needs a different way to engage.",
+        resource: {
+          title: "ALA Children and Teens with Disabilities Toolkit",
+          url: "https://www.ala.org/accessibility/children-and-teens-disabilities"
+        }
       },
       {
         ids: [16],
         title: "Create more opportunities for youth choice",
-        text: "Identify one part of an upcoming activity where participants could have more control over how they participate or what they create."
+        text: "Identify one part of an upcoming activity where participants could have more control over how they participate or what they create.",
+        resource: {
+          title: "CAST: Optimize choice and autonomy",
+          url: "https://udlguidelines.cast.org/engagement/interests-identities/choice-autonomy/"
+        }
       }
     ]
   }
@@ -322,6 +353,32 @@ function addResult(title, description, maintenance) {
   document.getElementById('resultsList').appendChild(card);
 }
 
+function getAreaRecommendations(area, responses) {
+  let allInPlace = true;
+  for (let i = 0; i < area.questions.length; i++) {
+    if (responses[area.questions[i].id] !== 'in-place') {
+      allInPlace = false;
+    }
+  }
+
+  if (allInPlace) {
+    return [area.maintenance];
+  }
+
+  const steps = [];
+  for (let i = 0; i < area.recommendations.length; i++) {
+    const recommendation = area.recommendations[i];
+    for (let j = 0; j < recommendation.ids.length; j++) {
+      const answer = responses[recommendation.ids[j]];
+      if (answer === 'in-progress' || answer === 'not-in-place') {
+        steps.push(recommendation);
+        break;
+      }
+    }
+  }
+  return steps;
+}
+
 function updateProgressAndResults() {
   const area = areaData[activeAreaKey];
   const responses = allResponses[activeAreaKey] || {};
@@ -340,34 +397,105 @@ function updateProgressAndResults() {
   document.getElementById('resultsTitle').textContent = area.title + ': Next Steps';
   document.getElementById('resultsList').innerHTML = '';
 
-  let allInPlace = true;
-  for (let i = 0; i < area.questions.length; i++) {
-    if (responses[area.questions[i].id] !== 'in-place') {
-      allInPlace = false;
-    }
-  }
-
-  if (allInPlace) {
-    addResult(area.maintenance.title, area.maintenance.text, true);
-  } else {
-    for (let i = 0; i < area.recommendations.length; i++) {
-      const recommendation = area.recommendations[i];
-      let relevant = false;
-
-      for (let j = 0; j < recommendation.ids.length; j++) {
-        const answer = responses[recommendation.ids[j]];
-        if (answer === 'in-progress' || answer === 'not-in-place') {
-          relevant = true;
-        }
-      }
-
-      if (relevant) {
-        addResult(recommendation.title, recommendation.text, false);
-      }
-    }
+  const steps = getAreaRecommendations(area, responses);
+  for (let i = 0; i < steps.length; i++) {
+    addResult(steps[i].title, steps[i].text, steps[i] === area.maintenance);
   }
 
   results.hidden = false;
+}
+
+function isAreaComplete(areaKey) {
+  const questions = areaData[areaKey].questions;
+  const responses = allResponses[areaKey] || {};
+
+  for (let i = 0; i < questions.length; i++) {
+    if (!responses[questions[i].id]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function addPrintText(parent, tag, text) {
+  const element = document.createElement(tag);
+  element.textContent = text;
+  parent.appendChild(element);
+  return element;
+}
+
+function buildPrintReport() {
+  const report = document.getElementById('printReport');
+  report.innerHTML = '';
+  addPrintText(report, 'h1', 'Inclusive Makerspace Planner');
+  addPrintText(report, 'p', 'Your responses and next steps · ' + new Date().toLocaleDateString());
+
+  const keys = Object.keys(areaData);
+  let completedAreas = 0;
+  for (let i = 0; i < keys.length; i++) {
+    const areaKey = keys[i];
+    if (!isAreaComplete(areaKey)) {
+      continue;
+    }
+    completedAreas++;
+
+    const area = areaData[areaKey];
+    const responses = allResponses[areaKey];
+    const section = document.createElement('section');
+    section.className = 'print-area';
+    addPrintText(section, 'h2', area.title);
+    addPrintText(section, 'h3', 'Your responses');
+    const answerList = document.createElement('ul');
+    answerList.className = 'print-responses';
+    for (let j = 0; j < area.questions.length; j++) {
+      const question = area.questions[j];
+      for (let k = 0; k < responseOptions.length; k++) {
+        if (responseOptions[k].value === responses[question.id]) {
+          addPrintText(answerList, 'li', question.title + ': ' + responseOptions[k].label);
+          break;
+        }
+      }
+    }
+    section.appendChild(answerList);
+
+    addPrintText(section, 'h3', 'Suggested next steps');
+    const steps = getAreaRecommendations(area, responses);
+    for (let j = 0; j < steps.length; j++) {
+      const step = document.createElement('div');
+      step.className = 'print-step';
+      addPrintText(step, 'h4', steps[j].title);
+      addPrintText(step, 'p', steps[j].text);
+      if (steps[j].resource) {
+        const resourceLine = document.createElement('p');
+        resourceLine.className = 'print-resource';
+        addPrintText(resourceLine, 'strong', 'Helpful resource: ');
+        const link = document.createElement('a');
+        link.href = steps[j].resource.url;
+        link.textContent = steps[j].resource.title;
+        resourceLine.appendChild(link);
+        const address = addPrintText(resourceLine, 'span', steps[j].resource.url);
+        address.className = 'print-url';
+        step.appendChild(resourceLine);
+      }
+      section.appendChild(step);
+    }
+    report.appendChild(section);
+  }
+
+  if (completedAreas === 0) {
+    addPrintText(report, 'p', 'Complete an area in the planner to see your suggested next steps here.');
+  }
+
+  const action = document.getElementById('actionStep').value.trim();
+  if (action) {
+    const section = document.createElement('section');
+    section.className = 'print-area';
+    addPrintText(section, 'h2', 'My next action');
+    addPrintText(section, 'p', action);
+    report.appendChild(section);
+  }
+  addPrintText(report, 'p', 'Based on research from the IMLS-funded Making for Everyone project.');
 }
 
 function openArea(areaKey) {
@@ -459,6 +587,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   document.getElementById('closeArea').addEventListener('click', closeArea);
+  document.getElementById('saveReport').addEventListener('click', function () {
+    buildPrintReport();
+    window.print();
+  });
+  window.addEventListener('beforeprint', buildPrintReport);
 
   const action = document.getElementById('actionStep');
   const saveMessage = document.getElementById('saveMessage');
